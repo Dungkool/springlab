@@ -30,6 +30,17 @@ public class AjaxImplController {
         return result;
     }
 
+    @RequestMapping("/chart05")
+    public Object chart05(String tear){
+        JSONArray ja = new JSONArray();
+        for(int i = 1; i <=12; i++){
+            Random r = new Random();
+            int num = r.nextInt(100) + 1;
+            ja.add(num);
+        }
+        return ja;
+    }
+
     @RequestMapping("/getdata")
     public Object getdata(){
         List<Cust> list = new ArrayList<>();

@@ -14,7 +14,7 @@
             alert('Error.....');
           }
         });
-      },3000);
+      },1000);
       // setInterval(function (){}, 3000 : 3초에 한번씩 함수 호출
     },
     display:function (data){

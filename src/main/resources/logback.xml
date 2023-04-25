@@ -2,6 +2,7 @@
 <configuration>
     <!-- directory 선언. 파일로 저장. 저장 경로 : value="./logs" 지정시, logs 폴더 생성하여 저장 -->
     <property name="LOGS_ABSOLUTE_PATH" value="./logs" />
+    <property name="LOGS_CUSTINFO" value="./src/main/resources/static/logs" />
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -24,6 +25,20 @@
         </rollingPolicy>
     </appender>
 
+    <appender name="FILE2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_CUSTINFO}/custinfo.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_CUSTINFO}/logback.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
     <!-- standard out
         INFO(trace > debug > info > warn > error)
         level="ERROR"로 설정시, 에러가 발생하지 않으면 화면에 출력되지 않음. 실제 서비스시 ERROR 로 설정해야 함-->
@@ -35,6 +50,9 @@
     <logger name="org.springframework.web" level="DEBUG">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
+    </logger>
+    <logger name="com.kbstar.controller.CustController" level="INFO">
+        <appender-ref ref="FILE2" />
     </logger>
     <!--
     <logger name="jdbc" level="OFF" />
