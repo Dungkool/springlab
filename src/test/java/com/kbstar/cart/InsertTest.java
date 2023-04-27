@@ -1,31 +1,29 @@
-package com.kbstar.cust;
+package com.kbstar.cart;
 
-import com.kbstar.dto.Cust;
-import com.kbstar.service.CustService;
+import com.kbstar.dto.Cart;
+import com.kbstar.service.CartService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DuplicateKeyException;
 
+import java.util.Date;
+
 @Slf4j
 @SpringBootTest
 class InsertTest {
     @Autowired
-    CustService service;
+    CartService service;
     @Test
         void contextLoads() {
-            Cust obj = new Cust("id21", "pwd21", "Billie");
+            Cart obj = new Cart("id04",101,3);
             try {
                 service.register(obj);
                 log.info("등록 정상...");
+                service.get();
             } catch (Exception e) {
-            if(e instanceof DuplicateKeyException){
-                log.info("★★★★★★★★★★★★★★★ID가 중복되었습니다.★★★★★★★★★★★★★★★");
-            }else{
                 log.info("★★★★★★★★★★★★★★★시스템 장애입니다.★★★★★★★★★★★★★★★");
-            }
         }
     }
-
 }

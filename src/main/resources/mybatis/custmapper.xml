@@ -2,8 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shop.mapper.CustMapper">
+<mapper namespace="com.kbstar.mapper.CustMapper">
 
+    <!-- id는 CustMapper에 있는 함수의 명칭 -->
     <select id="select" parameterType="String" resultType="cust">
         SELECT * FROM cust WHERE ID=#{id}
     </select>
@@ -14,7 +15,7 @@
         INSERT INTO cust VALUES (#{id},#{pwd},#{name})
     </insert>
     <update id="update" parameterType="cust">
-        UPDATE cust SET name=#{name}, pwd=#{PWD} WHERE id=#{id}
+        UPDATE cust SET name=#{name}, pwd=#{pwd} WHERE id=#{id}
     </update>
     <delete id="delete" parameterType="String">
         DELETE FROM cust WHERE id=#{id}
