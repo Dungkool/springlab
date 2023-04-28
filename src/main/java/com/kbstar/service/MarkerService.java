@@ -4,6 +4,7 @@ import com.kbstar.dto.Marker;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.MarkerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.source.MutuallyExclusiveConfigurationPropertiesException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,5 +45,9 @@ public class MarkerService implements KBService<Integer, Marker> {
     @Override
     public List<Marker> get() throws Exception {
         return mapper.selectall();
+    }
+
+    public List<Marker> getLoc(String loc) throws Exception{
+        return mapper.getloc(loc);
     }
 }

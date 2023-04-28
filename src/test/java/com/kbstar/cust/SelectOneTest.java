@@ -16,8 +16,12 @@ class SelectOneTest {
     CustService service;
     @Test
     void contextLoads() {
+        Cust cust = null;
         try {
-            service.get("id04");
+            cust = service.get("id77");
+            log.info("------------------------------------------------------------");
+            log.info(cust.toString());
+            log.info("------------------------------------------------------------");
         } catch (Exception e) {
             log.info("★★★★★★★★★★★★★★★ERROR★★★★★★★★★★★★★★★");
             e.printStackTrace();
