@@ -137,4 +137,16 @@ public class MainController {
     public String quics(String page){
         return page;
     }
+
+    @RequestMapping("/cfr1")
+    public String cfr1(Model model) {
+        model.addAttribute("center", "cfr1");
+        return "index";
+    }
+
+    @RequestMapping("/cfr2")
+    public String cfr2(Model model) {
+        model.addAttribute("center", "cfr2");
+        return "index";
+    }
 }
