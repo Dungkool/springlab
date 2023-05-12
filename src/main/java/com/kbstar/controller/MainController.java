@@ -4,8 +4,6 @@ import com.kbstar.dto.Cust;
 import com.kbstar.service.CustService;
 import com.kbstar.util.WeatherUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,11 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -147,6 +143,16 @@ public class MainController {
     @RequestMapping("/cfr2")
     public String cfr2(Model model) {
         model.addAttribute("center", "cfr2");
+        return "index";
+    }
+    @RequestMapping("/ocr1")
+    public String ocr1(Model model) {
+        model.addAttribute("center", "ocr1");
+        return "index";
+    }
+    @RequestMapping("/ocr2")
+    public String ocr2(Model model) {
+        model.addAttribute("center", "ocr2");
         return "index";
     }
 }
